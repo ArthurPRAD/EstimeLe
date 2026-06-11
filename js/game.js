@@ -146,8 +146,8 @@ function afficherQuestion() {
           type="range"
           id="curseur"
           min="0"
-          max="10000"
-          value="${Math.round(tInitial * 10000)}"
+          max="1000"
+          value="${Math.round(tInitial * 1000)}"
           class="curseur-log"
           aria-label="Votre estimation"
         />
@@ -164,7 +164,7 @@ function afficherQuestion() {
   const affichage = document.getElementById('valeur-affichee');
 
   curseur.addEventListener('input', () => {
-    const t = curseur.value / 10000;
+    const t = curseur.value / 1000;
     const v = arrondir(sliderVerValeur(t, q.borne_min, q.borne_max));
     affichage.innerHTML = `${formaterNombre(v)} <span class="unite">${q.unite}</span>`;
   });
