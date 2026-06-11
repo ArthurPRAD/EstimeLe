@@ -55,7 +55,7 @@ function calculerPalier(reponseJoueur, verite) {
 function construireTextePartage(numManche, scores, paliers) {
   const total = scores.reduce((a, b) => a + b, 0);
   const emojis = paliers.map(p => PALIERS.find(x => x.id === p)?.emoji || '?').join('');
-  return `EstimeLe #${numManche} — ${emojis} ${total}/300 — estimele.fr`;
+  return `EstimeLe #${numManche} - ${emojis} ${total}/300 - estimle.com`;
 }
 
 async function partager(texte) {
