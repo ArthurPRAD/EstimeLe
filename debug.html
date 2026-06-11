@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>EstimeLe — Debug</title>
+  <style>
+    body { font-family: monospace; background: #1a1a1a; color: #eee; padding: 2rem; max-width: 700px; margin: 0 auto; }
+    h1 { color: #2B4FD8; margin-bottom: 0.25rem; }
+    p.sub { color: #888; margin-top: 0; margin-bottom: 2rem; font-size: 0.85rem; }
+    .group { margin-bottom: 2rem; }
+    .group h2 { color: #D85A30; border-bottom: 1px solid #333; padding-bottom: 0.25rem; }
+    button {
+      display: inline-block; padding: 0.5rem 1rem; margin: 0.25rem 0.25rem 0.25rem 0;
+      background: #2B4FD8; color: #fff; border: 2px solid #fff; cursor: pointer;
+      font-family: monospace; font-size: 0.9rem;
+    }
+    button:hover { background: #1D9E75; }
+    button.danger { background: #E24B4A; }
+    button.danger:hover { background: #c03030; }
+    pre {
+      background: #111; border: 1px solid #333; padding: 1rem;
+      font-size: 0.78rem; overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+      max-height: 400px; overflow-y: auto;
+    }
+    .status { padding: 0.5rem 1rem; background: #1D9E75; color: #fff; margin-bottom: 1rem; display: none; }
+  </style>
+</head>
+<body>
+  <h1>EstimeLe — Debug</h1>
+  <p class="sub">Outils de test local. Ne pas déployer.</p>
+  <div class="status" id="status"></div>
+
+  <div class="group">
+    <h2>Réinitialisation</h2>
+    <button class="danger" onclick="resetTotal()">Reset TOTAL (tout effacer)</button>
+    <button onclick="resetPartieEnCours()">Reset partie en cours seulement</button>
+    <button onclick="resetAujourdhui()">Supprimer la partie d'aujourd'hui</button>
+  </div>
+
+  <div class="group">
+    <h2>Simuler une date</h2>
+    <div id="date-active" style="margin-bottom:0.5rem;color:#888;font-size:0.85rem"></div>
+    <input type="date" id="champ-date" style="font-family:monospace;font-size:0.9rem;padding:0.4rem;background:#111;color:#eee;border:2px solid #555;margin-right:0.5rem" />
+    <button onclick="simulerDate()">Simuler ce jour</button>
+    <button class="danger" onclick="reinitDate()">Revenir à aujourd'hui</button>
+    <p style="color:#888;font-size:0.8rem;margin-top:0.5rem">
+      Simule la date pour le jeu (sessionStorage — se réinitialise à la fermeture de l'onglet).
+    </p>
+  </div>
+
+  <div class="group">
+    <h2>Navigation rapide</h2>
+    <button onclick="jouer(null)">Jouer aujourd'hui</button>
+    <div id="nav-archives" style="margin-top:0.5rem"></div>
+  </div>
+
+  <div class="group">
+    <h2>État localStorage</h2>
+    <button onclick="afficherEtat()">Rafraîchir</button>
+    <pre id="etat">–</pre>
+  </div>
+
+  <script>
+    const CLE = 'estimele_data';
+
+    function toast(msg) {
+      const el = document.getElementById('status');
+      el.textContent = msg;
+      el.style.display = 'block';
+      setTimeout(() => el.style.display = 'none', 2500);
+    }
+
+    function charger() {
+      try { return JSON.parse(localStorage.getItem(CLE)) || {}; } catch { return {}; }
+    }
+
+    function sauver(d) {
+      localStorage.setItem(CLE, JSON.stringify(d));
+    }
+
+    function resetTotal() {
+      localStorage.removeItem(CLE);
+      toast('Reset total effectué');
+      afficherEtat();
+    }
+
+    function resetPartieEnCours() {
+      const d = charger();
+      delete d.partie_en_cours;
+      sauver(d);
+      toast('Partie en cours supprimée');
+      afficherEtat();
+    }
+
+    function resetAujourdhui() {
+      const d = charger();
+      // Supprimer la dernière entrée de l'historique (partie du jour)
+      // et la partie_en_cours
+      delete d.partie_en_cours;
+      // On retire l'entrée de la manche du jour dans historique
+      // On doit savoir quelle manche c'est — on la lit depuis le JSON
+      fetch('data/questionsV2.json')
+        .then(r => r.json())
+        .then(data => {
+          const lancement = new Date(data.config.date_lancement);
+          lancement.setHours(0,0,0,0);
+          const maintenant = new Date();
+          maintenant.setHours(0,0,0,0);
+          const jours = Math.max(0, Math.floor((maintenant - lancement) / 86400000));
+          const mancheDuJour = data.manches[jours];
+          if (mancheDuJour && d.historique) {
+            d.historique = d.historique.filter(h => h.manche !== mancheDuJour.numero);
+            toast(`Partie manche #${mancheDuJour.numero} supprimée`);
+          } else {
+            toast('Partie en cours supprimée (historique intact)');
+          }
+          sauver(d);
+          afficherEtat();
+        });
+    }
+
+    function jouer(archive) {
+      const url = archive !== null
+        ? `index.html?archive=${archive}`
+        : 'index.html';
+      window.location.href = url;
+    }
+
+    function afficherEtat() {
+      const raw = localStorage.getItem(CLE);
+      const el = document.getElementById('etat');
+      if (!raw) { el.textContent = '(vide)'; return; }
+      try { el.textContent = JSON.stringify(JSON.parse(raw), null, 2); }
+      catch { el.textContent = raw; }
+    }
+
+    function construireNavArchives() {
+      fetch('data/questionsV2.json')
+        .then(r => r.json())
+        .then(data => {
+          const lancement = new Date(data.config.date_lancement);
+          lancement.setHours(0,0,0,0);
+          const fakeDate = sessionStorage.getItem('estimele_debug_date');
+          const maintenant = fakeDate ? new Date(fakeDate) : new Date();
+          maintenant.setHours(0,0,0,0);
+          const jours = Math.max(0, Math.floor((maintenant - lancement) / 86400000));
+          const container = document.getElementById('nav-archives');
+          const frags = [];
+          for (let i = 0; i <= Math.min(jours, data.manches.length - 1); i++) {
+            const m = data.manches[i];
+            frags.push(`<button onclick="jouer(${m.numero})">Archive #${m.numero}</button>`);
+          }
+          container.innerHTML = frags.join('') || '<em style="color:#888">Aucune archive disponible</em>';
+        })
+        .catch(() => {
+          document.getElementById('nav-archives').innerHTML = '<em style="color:#888">Impossible de charger questionsV2.json</em>';
+        });
+    }
+
+    function simulerDate() {
+      const val = document.getElementById('champ-date').value;
+      if (!val) { toast('Sélectionne une date d\'abord'); return; }
+      sessionStorage.setItem('estimele_debug_date', val);
+      toast(`Date simulée : ${val}`);
+      afficherDateActive();
+      construireNavArchives();
+    }
+
+    function reinitDate() {
+      sessionStorage.removeItem('estimele_debug_date');
+      document.getElementById('champ-date').value = '';
+      toast('Date réinitialisée à aujourd\'hui');
+      afficherDateActive();
+      construireNavArchives();
+    }
+
+    function afficherDateActive() {
+      const fake = sessionStorage.getItem('estimele_debug_date');
+      const el = document.getElementById('date-active');
+      if (fake) {
+        el.innerHTML = `Date simulée : <strong style="color:#D85A30">${fake}</strong>`;
+      } else {
+        const auj = new Date().toISOString().slice(0, 10);
+        el.innerHTML = `Date active : <strong style="color:#1D9E75">${auj} (réelle)</strong>`;
+      }
+    }
+
+    // Pré-remplir le champ avec la date simulée active, ou aujourd'hui
+    const fakeDateInitial = sessionStorage.getItem('estimele_debug_date');
+    document.getElementById('champ-date').value = fakeDateInitial || new Date().toISOString().slice(0, 10);
+
+    afficherDateActive();
+    afficherEtat();
+    construireNavArchives();
+  </script>
+</body>
+</html>

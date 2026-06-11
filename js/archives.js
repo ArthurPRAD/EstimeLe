@@ -1,14 +1,22 @@
 async function initialiserArchives() {
-  const manches = await getToutesLesManches();
+  const manches = await getManchesDisponibles();
   const donnees = chargerDonnees();
   const container = document.getElementById('liste-archives');
 
   if (!manches.length) {
-    container.innerHTML = '<p>Aucune archive disponible.</p>';
+    container.innerHTML = `
+      <div style="text-align:center;padding:2rem;color:var(--ink-mid)">
+        <p style="font-size:1.5rem;margin-bottom:0.75rem">📅</p>
+        <p>Aucune archive pour l'instant.</p>
+        <p style="font-size:0.85rem;margin-top:0.4rem">Les manches passées apparaîtront ici dès le lendemain du lancement.</p>
+      </div>`;
     return;
   }
 
-  const html = manches.map(manche => {
+  // Afficher les plus récentes en premier
+  const manchesTri = [...manches].reverse();
+
+  const html = manchesTri.map(manche => {
     const historique = donnees.historique.find(h => h.manche === manche.numero);
     let statut = '';
     let scoreHtml = '';
@@ -30,7 +38,7 @@ async function initialiserArchives() {
     return `
       <div class="archive-carte ${statut}">
         <div class="archive-info">
-          <span class="archive-num">Manche #${manche.numero}</span>
+          <span class="archive-num">#${manche.numero} — ${manche.date}</span>
           <span class="archive-themes">${[...new Set(manche.questions.map(q => q.theme))].join(' · ')}</span>
           ${scoreHtml}
         </div>

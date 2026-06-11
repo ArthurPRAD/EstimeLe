@@ -1,0 +1,787 @@
+{
+  "config": {
+    "date_lancement": "2026-06-06",
+    "version_banque": 2
+  },
+  "manches": [
+    {
+      "numero": 1,
+      "questions": [
+        {
+          "id": "qL001",
+          "question": "Combien de boulangeries-pâtisseries y a-t-il en France ?",
+          "reponse": 33000,
+          "unite": "boulangeries",
+          "borne_min": 1000,
+          "borne_max": 1000000,
+          "source": "Confédération nationale de la boulangerie, 2023",
+          "anecdote": "Soit environ une boulangerie pour 2 000 habitants. La France en compte plus que n'importe quel autre pays au monde.",
+          "theme": "quotidien",
+          "difficulte": 2
+        },
+        {
+          "id": "qL002",
+          "question": "Quelle est la longueur du réseau ferroviaire français (lignes principales) ?",
+          "reponse": 28000,
+          "unite": "km",
+          "borne_min": 1000,
+          "borne_max": 500000,
+          "source": "SNCF Réseau, 2023",
+          "anecdote": "Le réseau français est le 2e d'Europe après l'Allemagne. Il comprend 2 800 km de LGV (lignes à grande vitesse).",
+          "theme": "transports",
+          "difficulte": 2
+        },
+        {
+          "id": "qL003",
+          "question": "Combien de fromages différents la France produit-elle ?",
+          "reponse": 1200,
+          "unite": "variétés",
+          "borne_min": 100,
+          "borne_max": 100000,
+          "source": "CNIEL / Syndicat général des fromages, 2022",
+          "anecdote": "De Gaulle disait : « Comment voulez-vous gouverner un pays qui a 246 variétés de fromage ? » La réalité a largement dépassé ce chiffre.",
+          "theme": "alimentation",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "questions": [
+        {
+          "id": "qL004",
+          "question": "Combien de visiteurs le musée du Louvre accueille-t-il par an ?",
+          "reponse": 9000000,
+          "unite": "visiteurs",
+          "borne_min": 100000,
+          "borne_max": 100000000,
+          "source": "Musée du Louvre, rapport annuel 2023",
+          "anecdote": "Le Louvre est le musée le plus visité au monde. La Joconde à elle seule attire plusieurs millions de personnes chaque année.",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "qL005",
+          "question": "Quelle est la hauteur de la Tour Eiffel avec son antenne ?",
+          "reponse": 330,
+          "unite": "mètres",
+          "borne_min": 50,
+          "borne_max": 5000,
+          "source": "Société d'Exploitation de la Tour Eiffel, 2022",
+          "anecdote": "Inaugurée en 1889 à 300 m, elle mesure aujourd'hui 330 m grâce à l'antenne de diffusion ajoutée en 2022. Elle se dilate de 15 cm en été.",
+          "theme": "culture",
+          "difficulte": 1
+        },
+        {
+          "id": "qL006",
+          "question": "Combien de tonnes de baguettes de pain sont produites en France chaque année ?",
+          "reponse": 6000000,
+          "unite": "tonnes",
+          "borne_min": 10000,
+          "borne_max": 500000000,
+          "source": "ANEB (Association Nationale de la Boulangerie-Pâtisserie), 2022",
+          "anecdote": "Environ 12 milliards de baguettes sont vendues chaque année, soit 180 baguettes par seconde. La baguette traditionnelle est inscrite au patrimoine immatériel de l'UNESCO depuis 2022.",
+          "theme": "alimentation",
+          "difficulte": 3
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "questions": [
+        {
+          "id": "qL007",
+          "question": "Combien de communes la France métropolitaine compte-t-elle ?",
+          "reponse": 34935,
+          "unite": "communes",
+          "borne_min": 1000,
+          "borne_max": 1000000,
+          "source": "INSEE, 2023",
+          "anecdote": "La France est le pays qui a le plus de communes en Europe. 70 % d'entre elles comptent moins de 1 000 habitants.",
+          "theme": "géographie",
+          "difficulte": 2
+        },
+        {
+          "id": "qL008",
+          "question": "Quelle est la consommation annuelle de vin en France par habitant ?",
+          "reponse": 40,
+          "unite": "litres",
+          "borne_min": 1,
+          "borne_max": 1000,
+          "source": "OIV (Organisation Internationale de la Vigne et du Vin), 2022",
+          "anecdote": "Malgré cette consommation élevée, les Français boivent deux fois moins de vin qu'il y a 50 ans. Le Portugal détient le record mondial avec 51 litres par habitant.",
+          "theme": "alimentation",
+          "difficulte": 2
+        },
+        {
+          "id": "qL009",
+          "question": "Combien de personnes travaillent dans la fonction publique en France ?",
+          "reponse": 5700000,
+          "unite": "agents publics",
+          "borne_min": 100000,
+          "borne_max": 50000000,
+          "source": "DGAFP (Direction générale de l'administration), 2023",
+          "anecdote": "Cela représente environ 20 % de la population active. C'est l'un des taux les plus élevés des pays de l'OCDE.",
+          "theme": "quotidien",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "questions": [
+        {
+          "id": "qL010",
+          "question": "Combien d'aéroports commerciaux y a-t-il en France (métropole + DOM) ?",
+          "reponse": 150,
+          "unite": "aéroports",
+          "borne_min": 10,
+          "borne_max": 10000,
+          "source": "DGAC (Direction générale de l'aviation civile), 2023",
+          "anecdote": "La France dispose du 3e réseau aéroportuaire en Europe. Roissy-CDG seul traite plus de 67 millions de passagers par an.",
+          "theme": "transports",
+          "difficulte": 2
+        },
+        {
+          "id": "qL011",
+          "question": "Quelle est la superficie de la forêt française en métropole ?",
+          "reponse": 17000000,
+          "unite": "hectares",
+          "borne_min": 100000,
+          "borne_max": 1000000000,
+          "source": "IGN, Inventaire forestier national 2023",
+          "anecdote": "La forêt française a doublé de superficie depuis 150 ans et couvre désormais 31 % du territoire métropolitain. Soit la taille du Cameroun.",
+          "theme": "géographie",
+          "difficulte": 3
+        },
+        {
+          "id": "qL012",
+          "question": "Combien d'élèves sont scolarisés dans les écoles françaises (primaire + secondaire) ?",
+          "reponse": 12500000,
+          "unite": "élèves",
+          "borne_min": 100000,
+          "borne_max": 100000000,
+          "source": "Ministère de l'Éducation nationale, 2023",
+          "anecdote": "C'est le deuxième plus grand service public français après la Sécurité sociale. L'Éducation nationale emploie 860 000 enseignants.",
+          "theme": "quotidien",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 5,
+      "questions": [
+        {
+          "id": "qL013",
+          "question": "Combien de châteaux et monuments historiques protégés y a-t-il en France ?",
+          "reponse": 45000,
+          "unite": "monuments",
+          "borne_min": 1000,
+          "borne_max": 1000000,
+          "source": "Ministère de la Culture, base Mérimée 2023",
+          "anecdote": "La France est le pays qui compte le plus de monuments historiques protégés au monde. Un quart d'entre eux sont classés, les autres sont inscrits.",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "qL014",
+          "question": "Quelle distance sépare Brest de Strasbourg (à vol d'oiseau) ?",
+          "reponse": 950,
+          "unite": "km",
+          "borne_min": 100,
+          "borne_max": 10000,
+          "source": "Calcul géodésique, IGN",
+          "anecdote": "La France métropolitaine mesure environ 1 000 km dans sa plus grande dimension, qu'on appelle la « diagonale du vide » tant ces zones sont peu peuplées.",
+          "theme": "géographie",
+          "difficulte": 2
+        },
+        {
+          "id": "qL015",
+          "question": "Combien de vélos sont vendus en France chaque année ?",
+          "reponse": 2800000,
+          "unite": "vélos",
+          "borne_min": 10000,
+          "borne_max": 100000000,
+          "source": "Union Sport & Cycle, 2023",
+          "anecdote": "Pour la première fois en 2021, les Français ont acheté plus de vélos que de voitures. Les vélos électriques représentent désormais 25 % des ventes.",
+          "theme": "transports",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 6,
+      "questions": [
+        {
+          "id": "q001",
+          "question": "Quelle est la longueur de la Loire, le plus long fleuve de France ?",
+          "reponse": 1006,
+          "unite": "km",
+          "borne_min": 100,
+          "borne_max": 10000,
+          "source": "IGN / Sandre (référentiel hydrographique)",
+          "anecdote": "La Loire prend sa source au mont Gerbier-de-Jonc en Ardèche et se jette dans l'Atlantique à Saint-Nazaire. C'est aussi le dernier grand fleuve « sauvage » d'Europe, sans grands barrages sur son cours principal.",
+          "theme": "géographie",
+          "difficulte": 1
+        },
+        {
+          "id": "q002",
+          "question": "Combien d'habitants la France compte-t-elle au 1er janvier 2026 ?",
+          "reponse": 69100000,
+          "unite": "habitants",
+          "borne_min": 1000000,
+          "borne_max": 1000000000,
+          "source": "INSEE, bilan démographique 2025 (publié janvier 2026)",
+          "anecdote": "Soit 66,8 millions en métropole et 2,3 millions en outre-mer. Fait historique : en 2025, pour la première fois depuis la Seconde Guerre mondiale, les décès ont dépassé les naissances en France.",
+          "theme": "quotidien",
+          "difficulte": 1
+        },
+        {
+          "id": "q003",
+          "question": "Quel est le record du monde de vitesse sur rail détenu par le TGV français ?",
+          "reponse": 575,
+          "unite": "km/h",
+          "borne_min": 100,
+          "borne_max": 2000,
+          "source": "SNCF / Alstom, record homologué du 3 avril 2007",
+          "anecdote": "Précisément 574,8 km/h, atteints le 3 avril 2007 sur la LGV Est avec une rame spécialement préparée. Ce record du monde de vitesse sur rail conventionnel n'a jamais été battu depuis.",
+          "theme": "transports",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 7,
+      "questions": [
+        {
+          "id": "q004",
+          "question": "Quelle est l'altitude du Mont Blanc, plus haut sommet de France et d'Europe occidentale ?",
+          "reponse": 4806,
+          "unite": "mètres",
+          "borne_min": 1000,
+          "borne_max": 10000,
+          "source": "Chambre des géomètres-experts de Haute-Savoie, mesure 2023 (4 805,59 m)",
+          "anecdote": "Son altitude varie de quelques dizaines de centimètres selon les années, car le sommet est une calotte de glace dont l'épaisseur fluctue. Il est remesuré officiellement tous les deux ans.",
+          "theme": "géographie",
+          "difficulte": 1
+        },
+        {
+          "id": "q005",
+          "question": "Combien de bouteilles de champagne ont été expédiées (France + export) en 2025 ?",
+          "reponse": 266000000,
+          "unite": "bouteilles",
+          "borne_min": 1000000,
+          "borne_max": 10000000000,
+          "source": "Comité Champagne (CIVC), bilan annuel publié en janvier 2026",
+          "anecdote": "Soit plus de 8 bouteilles débouchées chaque seconde dans le monde. L'export représente 57 % des volumes, et la filière génère environ 5,2 milliards d'euros de chiffre d'affaires.",
+          "theme": "alimentation",
+          "difficulte": 2
+        },
+        {
+          "id": "q006",
+          "question": "Quelle est la capacité du Stade de France en configuration football/rugby ?",
+          "reponse": 80000,
+          "unite": "places",
+          "borne_min": 5000,
+          "borne_max": 1000000,
+          "source": "Consortium Stade de France",
+          "anecdote": "Précisément 80 698 places, ce qui en fait le plus grand stade de France. Inauguré en 1998 pour la Coupe du monde, il a vu les Bleus soulever leur première étoile face au Brésil (3-0).",
+          "theme": "sport",
+          "difficulte": 1
+        }
+      ]
+    },
+    {
+      "numero": 8,
+      "questions": [
+        {
+          "id": "q007",
+          "question": "Combien de départements la France compte-t-elle (métropole + outre-mer) ?",
+          "reponse": 101,
+          "unite": "départements",
+          "borne_min": 10,
+          "borne_max": 1000,
+          "source": "INSEE / Code officiel géographique",
+          "anecdote": "96 en métropole et 5 outre-mer (Guadeloupe, Martinique, Guyane, La Réunion, Mayotte). Créés en 1790 pour que chaque citoyen puisse rejoindre son chef-lieu en moins d'une journée de cheval.",
+          "theme": "géographie",
+          "difficulte": 1
+        },
+        {
+          "id": "q008",
+          "question": "Combien de médailles la France a-t-elle remportées aux Jeux Olympiques de Paris 2024 ?",
+          "reponse": 64,
+          "unite": "médailles",
+          "borne_min": 1,
+          "borne_max": 1000,
+          "source": "Comité International Olympique, résultats officiels Paris 2024",
+          "anecdote": "Dont 16 en or, 26 en argent et 22 en bronze : le meilleur total français depuis plus d'un siècle, qui place la France 5e nation. Léon Marchand a décroché à lui seul 4 titres olympiques.",
+          "theme": "sport",
+          "difficulte": 2
+        },
+        {
+          "id": "q009",
+          "question": "Combien de pharmacies (officines) y a-t-il en France ?",
+          "reponse": 20000,
+          "unite": "pharmacies",
+          "borne_min": 1000,
+          "borne_max": 1000000,
+          "source": "Ordre national des pharmaciens, démographie 2024",
+          "anecdote": "Soit environ une pharmacie pour 3 400 habitants, l'un des maillages les plus denses d'Europe. Leur implantation est strictement réglementée par des quotas de population.",
+          "theme": "quotidien",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 9,
+      "questions": [
+        {
+          "id": "q010",
+          "question": "Quelle est la hauteur du viaduc de Millau, le pont le plus haut du monde ?",
+          "reponse": 343,
+          "unite": "mètres",
+          "borne_min": 50,
+          "borne_max": 5000,
+          "source": "Eiffage / Compagnie Eiffage du Viaduc de Millau",
+          "anecdote": "Son pylône culmine à 343 m, soit plus haut que la Tour Eiffel. Conçu par Norman Foster et Michel Virlogeux, il a été inauguré en 2004 et enjambe la vallée du Tarn sur 2 460 m.",
+          "theme": "transports",
+          "difficulte": 2
+        },
+        {
+          "id": "q011",
+          "question": "Combien de kilos de fromage un Français consomme-t-il en moyenne par an ?",
+          "reponse": 27,
+          "unite": "kg",
+          "borne_min": 1,
+          "borne_max": 500,
+          "source": "CNIEL / FranceAgriMer, données de consommation",
+          "anecdote": "Les Français sont parmi les plus gros mangeurs de fromage au monde, au coude-à-coude avec les Grecs (grâce à la feta). L'emmental et le camembert restent les plus vendus en grande surface.",
+          "theme": "alimentation",
+          "difficulte": 2
+        },
+        {
+          "id": "q012",
+          "question": "Combien d'établissements bénéficient de l'appellation officielle « Musée de France » ?",
+          "reponse": 1200,
+          "unite": "musées",
+          "borne_min": 100,
+          "borne_max": 100000,
+          "source": "Ministère de la Culture, liste officielle des Musées de France",
+          "anecdote": "Précisément 1 222 musées labellisés, dont près de la moitié dans des communes de moins de 20 000 habitants. Ce label garantit notamment que les collections sont inaliénables.",
+          "theme": "culture",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 10,
+      "questions": [
+        {
+          "id": "q013",
+          "question": "Quelle est la longueur du tunnel sous la Manche ?",
+          "reponse": 50,
+          "unite": "km",
+          "borne_min": 5,
+          "borne_max": 1000,
+          "source": "Getlink (Eurotunnel)",
+          "anecdote": "Précisément 50,45 km, dont 38 km sous la mer : c'est le plus long tunnel sous-marin du monde. Inauguré en 1994, il relie Coquelles à Folkestone en 35 minutes.",
+          "theme": "transports",
+          "difficulte": 2
+        },
+        {
+          "id": "q014",
+          "question": "Combien de visiteurs le château de Versailles accueille-t-il par an ?",
+          "reponse": 8400000,
+          "unite": "visiteurs",
+          "borne_min": 100000,
+          "borne_max": 100000000,
+          "source": "Établissement public du château de Versailles, rapport d'activité 2024",
+          "anecdote": "C'est le deuxième site culturel le plus visité de France après le Louvre. Environ 80 % des visiteurs sont étrangers, et la galerie des Glaces reste l'étape incontournable.",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "q015",
+          "question": "Combien de vaches laitières compte le cheptel français ?",
+          "reponse": 3300000,
+          "unite": "vaches",
+          "borne_min": 100000,
+          "borne_max": 100000000,
+          "source": "Agreste / Institut de l'Élevage (Idele), 2024",
+          "anecdote": "La France est le 2e producteur de lait d'Europe derrière l'Allemagne, avec environ 24 milliards de litres par an. La Prim'Holstein, noire et blanche, représente les deux tiers du troupeau.",
+          "theme": "alimentation",
+          "difficulte": 3
+        }
+      ]
+    },
+    {
+      "numero": 11,
+      "questions": [
+        {
+          "id": "q016",
+          "question": "Quelle est la longueur de la Seine ?",
+          "reponse": 777,
+          "unite": "km",
+          "borne_min": 100,
+          "borne_max": 10000,
+          "source": "IGN / Sandre (référentiel hydrographique)",
+          "anecdote": "Elle prend sa source en Bourgogne, sur le plateau de Langres, à seulement 446 m d'altitude. Sa pente très faible explique ses larges méandres en Normandie avant Le Havre.",
+          "theme": "géographie",
+          "difficulte": 2
+        },
+        {
+          "id": "q017",
+          "question": "Combien d'entrées les cinémas français ont-ils enregistrées en 2025 ?",
+          "reponse": 157000000,
+          "unite": "entrées",
+          "borne_min": 1000000,
+          "borne_max": 10000000000,
+          "source": "CNC (Centre national du cinéma), bilan 2025",
+          "anecdote": "Précisément 156,79 millions d'entrées. Malgré une baisse par rapport à 2024, la France reste de très loin le premier marché du cinéma en Europe, devant l'Allemagne (85 millions).",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "q018",
+          "question": "Quelle est la longueur du réseau autoroutier français ?",
+          "reponse": 12000,
+          "unite": "km",
+          "borne_min": 1000,
+          "borne_max": 500000,
+          "source": "Ministère des Transports / ASFA, 2024",
+          "anecdote": "Environ les trois quarts du réseau sont concédés à des sociétés à péage. La première autoroute française, l'« autoroute de l'Ouest » vers Saint-Cloud, date de 1946.",
+          "theme": "transports",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 12,
+      "questions": [
+        {
+          "id": "q019",
+          "question": "Combien de ponts et passerelles franchissent la Seine dans Paris intra-muros ?",
+          "reponse": 37,
+          "unite": "ponts",
+          "borne_min": 5,
+          "borne_max": 500,
+          "source": "Ville de Paris",
+          "anecdote": "Le plus ancien est paradoxalement le Pont Neuf (1607), et le plus récent la passerelle Simone-de-Beauvoir (2006). Le pont Alexandre-III est considéré comme le plus somptueux.",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "q020",
+          "question": "Quelle est la superficie du vignoble français ?",
+          "reponse": 750000,
+          "unite": "hectares",
+          "borne_min": 10000,
+          "borne_max": 100000000,
+          "source": "FranceAgriMer / Douanes, 2024",
+          "anecdote": "Soit environ 1,4 % du territoire métropolitain, qui fait de la France l'un des trois plus grands producteurs mondiaux de vin avec l'Italie et l'Espagne. Le Bordelais reste le plus vaste vignoble d'appellation.",
+          "theme": "alimentation",
+          "difficulte": 2
+        },
+        {
+          "id": "q021",
+          "question": "Combien de sapeurs-pompiers (professionnels et volontaires) compte la France ?",
+          "reponse": 250000,
+          "unite": "pompiers",
+          "borne_min": 10000,
+          "borne_max": 10000000,
+          "source": "Ministère de l'Intérieur, statistiques des services d'incendie et de secours, 2023",
+          "anecdote": "Près de 80 % d'entre eux sont des volontaires qui exercent un autre métier. Les pompiers réalisent une intervention toutes les 6,5 secondes en France, surtout du secours à la personne.",
+          "theme": "quotidien",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 13,
+      "questions": [
+        {
+          "id": "q022",
+          "question": "Combien de marches faut-il gravir pour atteindre le sommet de la Tour Eiffel ?",
+          "reponse": 1665,
+          "unite": "marches",
+          "borne_min": 100,
+          "borne_max": 100000,
+          "source": "Société d'Exploitation de la Tour Eiffel",
+          "anecdote": "L'escalier public s'arrête toutefois au 2e étage (674 marches) : le sommet n'est accessible qu'en ascenseur. Un championnat de course verticale s'y déroule chaque année.",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "q023",
+          "question": "Combien de tonnes d'huîtres la France produit-elle chaque année ?",
+          "reponse": 80000,
+          "unite": "tonnes",
+          "borne_min": 1000,
+          "borne_max": 10000000,
+          "source": "CNC (Comité national de la conchyliculture), 2023",
+          "anecdote": "La France est de très loin le premier producteur et consommateur d'huîtres d'Europe. La moitié des ventes se concentre sur les fêtes de fin d'année.",
+          "theme": "alimentation",
+          "difficulte": 3
+        },
+        {
+          "id": "q024",
+          "question": "Quelle distance les coureurs du Tour de France parcourent-ils en moyenne chaque année ?",
+          "reponse": 3400,
+          "unite": "km",
+          "borne_min": 100,
+          "borne_max": 100000,
+          "source": "ASO (Amaury Sport Organisation), organisateur du Tour",
+          "anecdote": "Soit l'équivalent d'un Paris-Moscou à vélo en trois semaines. Créé en 1903, le Tour est le troisième événement sportif le plus regardé au monde après les JO et la Coupe du monde de football.",
+          "theme": "sport",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 14,
+      "questions": [
+        {
+          "id": "q025",
+          "question": "Quelle est la superficie de la France métropolitaine ?",
+          "reponse": 552000,
+          "unite": "km²",
+          "borne_min": 10000,
+          "borne_max": 10000000,
+          "source": "IGN / INSEE (551 695 km²)",
+          "anecdote": "C'est le plus grand pays de l'Union européenne. Sa forme évoquant un hexagone lui vaut son surnom. Avec l'outre-mer, la France possède aussi le 2e domaine maritime mondial.",
+          "theme": "géographie",
+          "difficulte": 2
+        },
+        {
+          "id": "q026",
+          "question": "Combien de médecins en activité compte la France ?",
+          "reponse": 230000,
+          "unite": "médecins",
+          "borne_min": 10000,
+          "borne_max": 10000000,
+          "source": "Conseil national de l'Ordre des médecins, atlas démographique 2024",
+          "anecdote": "Un nombre globalement stable, mais très inégalement réparti sur le territoire, d'où le phénomène des « déserts médicaux ». Près d'un médecin en activité sur cinq a été diplômé à l'étranger.",
+          "theme": "quotidien",
+          "difficulte": 2
+        },
+        {
+          "id": "q027",
+          "question": "Combien de réacteurs nucléaires la France compte-t-elle en exploitation ?",
+          "reponse": 57,
+          "unite": "réacteurs",
+          "borne_min": 1,
+          "borne_max": 1000,
+          "source": "EDF / ASNR, 2026 (incluant l'EPR de Flamanville)",
+          "anecdote": "Le 57e, l'EPR de Flamanville, a atteint sa pleine puissance fin 2025 : c'est le réacteur le plus puissant de France (1 650 MW). Le nucléaire fournit environ les deux tiers de l'électricité française, un record mondial.",
+          "theme": "économie",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 15,
+      "questions": [
+        {
+          "id": "q028",
+          "question": "Quelle est la longueur du pont de Saint-Nazaire, le plus long pont de France ?",
+          "reponse": 3356,
+          "unite": "mètres",
+          "borne_min": 100,
+          "borne_max": 100000,
+          "source": "Conseil départemental de Loire-Atlantique",
+          "anecdote": "Il enjambe l'estuaire de la Loire entre Saint-Nazaire et Saint-Brevin-les-Pins depuis 1975. À son inauguration, c'était le plus long pont à haubans du monde. Il est gratuit depuis 1994.",
+          "theme": "transports",
+          "difficulte": 3
+        },
+        {
+          "id": "q029",
+          "question": "Combien de visiteurs internationaux la France a-t-elle accueillis en 2025 ?",
+          "reponse": 102000000,
+          "unite": "visiteurs",
+          "borne_min": 1000000,
+          "borne_max": 10000000000,
+          "source": "Ministère de l'Économie / Atout France, bilan publié en février 2026",
+          "anecdote": "Un record historique qui confirme la France comme pays le plus visité du monde, devant l'Espagne. Les recettes touristiques internationales ont atteint 77,5 milliards d'euros, un record également.",
+          "theme": "économie",
+          "difficulte": 1
+        },
+        {
+          "id": "q030",
+          "question": "Quelle est la hauteur de la dune du Pilat, la plus haute dune d'Europe ?",
+          "reponse": 103,
+          "unite": "mètres",
+          "borne_min": 10,
+          "borne_max": 1000,
+          "source": "Syndicat mixte de la Grande Dune du Pilat / IGN",
+          "anecdote": "Sa hauteur varie de quelques mètres selon les années car la dune est vivante : elle avance de 1 à 5 mètres par an vers la forêt, engloutissant peu à peu les pins. Elle contient 60 millions de m³ de sable.",
+          "theme": "nature",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 16,
+      "questions": [
+        {
+          "id": "q031",
+          "question": "Combien d'écrivains français ont reçu le prix Nobel de littérature ?",
+          "reponse": 16,
+          "unite": "lauréats",
+          "borne_min": 1,
+          "borne_max": 100,
+          "source": "Fondation Nobel, liste officielle des lauréats",
+          "anecdote": "C'est le record mondial, devant les États-Unis et le Royaume-Uni. Le premier Nobel de littérature de l'histoire fut un Français, Sully Prudhomme (1901), et le plus récent Annie Ernaux (2022). Sartre l'a refusé en 1964.",
+          "theme": "culture",
+          "difficulte": 3
+        },
+        {
+          "id": "q032",
+          "question": "Combien de campings y a-t-il en France ?",
+          "reponse": 7500,
+          "unite": "campings",
+          "borne_min": 100,
+          "borne_max": 100000,
+          "source": "INSEE / FNHPA (Fédération nationale de l'hôtellerie de plein air), 2024",
+          "anecdote": "C'est le premier parc de campings d'Europe et le deuxième au monde derrière les États-Unis. L'hôtellerie de plein air est le premier mode d'hébergement touristique marchand des Français.",
+          "theme": "quotidien",
+          "difficulte": 2
+        },
+        {
+          "id": "q033",
+          "question": "En combien de jours le record du Vendée Globe a-t-il été établi en 2025 ?",
+          "reponse": 64,
+          "unite": "jours",
+          "borne_min": 30,
+          "borne_max": 200,
+          "source": "Vendée Globe / SAEM, classement officiel de l'édition 2024-2025",
+          "anecdote": "Charlie Dalin a bouclé le tour du monde en solitaire, sans escale et sans assistance en 64 jours, 19 heures et 22 minutes, pulvérisant de près de 10 jours le précédent record d'Armel Le Cléac'h (2017).",
+          "theme": "sport",
+          "difficulte": 3
+        }
+      ]
+    },
+    {
+      "numero": 17,
+      "questions": [
+        {
+          "id": "q034",
+          "question": "Quelle est la hauteur de la tour Montparnasse ?",
+          "reponse": 210,
+          "unite": "mètres",
+          "borne_min": 50,
+          "borne_max": 5000,
+          "source": "Ensemble Immobilier Tour Maine-Montparnasse",
+          "anecdote": "C'est le plus haut gratte-ciel de Paris intra-muros depuis 1973. Sa construction a fait tellement polémique que les immeubles de grande hauteur ont été interdits dans Paris pendant des décennies.",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "q035",
+          "question": "Combien d'euros de dons ont été collectés pour la restauration de Notre-Dame de Paris ?",
+          "reponse": 846000000,
+          "unite": "euros",
+          "borne_min": 10000000,
+          "borne_max": 100000000000,
+          "source": "Établissement public Rebâtir Notre-Dame de Paris, 2024",
+          "anecdote": "846 millions d'euros offerts par 340 000 donateurs de 150 pays après l'incendie d'avril 2019 : la plus grande collecte patrimoniale de l'histoire. La cathédrale a rouvert en décembre 2024.",
+          "theme": "culture",
+          "difficulte": 2
+        },
+        {
+          "id": "q036",
+          "question": "Quelle est l'espérance de vie des femmes en France ?",
+          "reponse": 86,
+          "unite": "ans",
+          "borne_min": 40,
+          "borne_max": 120,
+          "source": "INSEE, bilan démographique 2025 (85,9 ans)",
+          "anecdote": "Les Françaises ont l'une des meilleures espérances de vie au monde, contre 80,3 ans pour les hommes. La doyenne de l'humanité reste une Française : Jeanne Calment, décédée à 122 ans en 1997.",
+          "theme": "quotidien",
+          "difficulte": 1
+        }
+      ]
+    },
+    {
+      "numero": 18,
+      "questions": [
+        {
+          "id": "q037",
+          "question": "Quelle est l'altitude du Vignemale, plus haut sommet des Pyrénées françaises ?",
+          "reponse": 3298,
+          "unite": "mètres",
+          "borne_min": 1000,
+          "borne_max": 10000,
+          "source": "IGN",
+          "anecdote": "Le point culminant de toute la chaîne, l'Aneto (3 404 m), se trouve lui côté espagnol. Le Vignemale abrite le glacier d'Ossoue, le plus grand des Pyrénées, aujourd'hui en voie de disparition.",
+          "theme": "géographie",
+          "difficulte": 3
+        },
+        {
+          "id": "q038",
+          "question": "Sur combien de fuseaux horaires le territoire français s'étend-il ?",
+          "reponse": 12,
+          "unite": "fuseaux horaires",
+          "borne_min": 1,
+          "borne_max": 50,
+          "source": "Observatoire de Paris / Légifrance (décrets sur l'heure légale)",
+          "anecdote": "C'est le record mondial, devant les États-Unis et la Russie, grâce aux territoires d'outre-mer dispersés de la Polynésie à Wallis-et-Futuna. Quand il est midi à Paris, il est déjà demain à Nouméa... ou presque hier à Tahiti.",
+          "theme": "géographie",
+          "difficulte": 2
+        },
+        {
+          "id": "q039",
+          "question": "Combien de personnels compte la Gendarmerie nationale ?",
+          "reponse": 100000,
+          "unite": "gendarmes",
+          "borne_min": 1000,
+          "borne_max": 10000000,
+          "source": "Ministère de l'Intérieur / Direction générale de la Gendarmerie nationale, 2024",
+          "anecdote": "Les gendarmes, qui sont des militaires, assurent la sécurité de 95 % du territoire et d'environ la moitié de la population, principalement dans les zones rurales et périurbaines.",
+          "theme": "quotidien",
+          "difficulte": 2
+        }
+      ]
+    },
+    {
+      "numero": 19,
+      "questions": [
+        {
+          "id": "q040",
+          "question": "Quelle est la hauteur de la flèche de la cathédrale de Strasbourg ?",
+          "reponse": 142,
+          "unite": "mètres",
+          "borne_min": 20,
+          "borne_max": 5000,
+          "source": "Fondation de l'Œuvre Notre-Dame de Strasbourg",
+          "anecdote": "Achevée en 1439, elle fut le plus haut édifice du monde pendant plus de deux siècles. Victor Hugo la décrivait comme un « prodige de grandeur et de délicatesse ». Seule la cathédrale de Rouen (151 m) la dépasse en France.",
+          "theme": "culture",
+          "difficulte": 3
+        },
+        {
+          "id": "q041",
+          "question": "Quelle est la superficie du lac du Bourget, plus grand lac naturel entièrement français ?",
+          "reponse": 44,
+          "unite": "km²",
+          "borne_min": 1,
+          "borne_max": 10000,
+          "source": "CISALB / IGN",
+          "anecdote": "Situé en Savoie près d'Aix-les-Bains, il a inspiré à Lamartine son célèbre poème « Le Lac ». Le lac Léman est plus grand, mais il est partagé avec la Suisse.",
+          "theme": "nature",
+          "difficulte": 3
+        },
+        {
+          "id": "q042",
+          "question": "Quelle est la profondeur maximale des gorges du Verdon ?",
+          "reponse": 700,
+          "unite": "mètres",
+          "borne_min": 50,
+          "borne_max": 5000,
+          "source": "Parc naturel régional du Verdon",
+          "anecdote": "Souvent surnommées le « Grand Canyon européen », ce sont les gorges les plus profondes d'Europe. Leur eau turquoise doit sa couleur au fluor et aux micro-algues, et le site attire grimpeurs du monde entier.",
+          "theme": "nature",
+          "difficulte": 2
+        }
+      ]
+    }
+  ]
+}

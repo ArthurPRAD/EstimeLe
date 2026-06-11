@@ -1,11 +1,8 @@
 const STORAGE_KEY = 'estimele_data';
-const STORAGE_VERSION = 1;
+const STORAGE_VERSION = 2;
 
 const DEFAULT_DATA = {
   version: STORAGE_VERSION,
-  streak_actuel: 0,
-  meilleur_streak: 0,
-  dernier_jour_joue: null,
   partie_en_cours: null,
   historique: [],
   stats: {
@@ -32,36 +29,21 @@ function sauvegarderDonnees(data) {
 }
 
 function migrer(data) {
-  // V1 : première version, pas de migration nécessaire
-  return { ...structuredClone(DEFAULT_DATA), ...data, version: STORAGE_VERSION };
+  const base = { ...structuredClone(DEFAULT_DATA), ...data, version: STORAGE_VERSION };
+  delete base.streak_actuel;
+  delete base.meilleur_streak;
+  delete base.dernier_jour_joue;
+  return base;
 }
 
 function dateAujourdhui() {
-  const d = new Date();
+  const fake = sessionStorage.getItem('estimele_debug_date');
+  const d = fake ? new Date(fake) : new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-}
-
-function mettreAJourStreak(data) {
-  const aujourd = dateAujourdhui();
-  if (data.dernier_jour_joue === aujourd) return;
-
-  const hier = new Date();
-  hier.setDate(hier.getDate() - 1);
-  const hierStr = `${hier.getFullYear()}-${String(hier.getMonth() + 1).padStart(2, '0')}-${String(hier.getDate()).padStart(2, '0')}`;
-
-  if (data.dernier_jour_joue === hierStr) {
-    data.streak_actuel += 1;
-  } else {
-    data.streak_actuel = 1;
-  }
-
-  data.meilleur_streak = Math.max(data.meilleur_streak, data.streak_actuel);
-  data.dernier_jour_joue = aujourd;
 }
 
 function enregistrerResultat(data, numManche, scores, paliers) {
   const aujourd = dateAujourdhui();
-  mettreAJourStreak(data);
 
   data.historique.push({
     jour: aujourd,

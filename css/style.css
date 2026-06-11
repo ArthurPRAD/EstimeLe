@@ -162,6 +162,19 @@ main {
   letter-spacing: 1px;
 }
 
+.date-manche {
+  width: 100%;
+  font-family: var(--ff-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-mid);
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed var(--ink-mid);
+  margin-bottom: 0.1rem;
+}
+
 .progression {
   margin-left: auto;
   font-family: var(--ff-px);
@@ -177,20 +190,6 @@ main {
   -webkit-font-smoothing: none;
 }
 
-.streak {
-  font-family: var(--ff-px);
-  font-size: 0.875rem;
-  color: var(--ink);
-  background: #FFF3E0;
-  border: var(--b);
-  padding: 0.3rem 0.55rem;
-  letter-spacing: 0.5px;
-  min-height: 32px;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  -webkit-font-smoothing: none;
-}
 
 .badge-archive {
   font-family: var(--ff-body);
@@ -287,6 +286,41 @@ main {
   min-width: 2.5rem;
   text-align: center;
 }
+
+/* Groupe slider + boutons ± */
+.slider-nudge-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-nudge {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--b);
+  font-family: var(--ff-px);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--sh-sm);
+  transform: translate(0, 0);
+  transition: box-shadow 60ms steps(1, end), transform 60ms steps(1, end);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  -webkit-font-smoothing: none;
+  /* Garantit une zone tactile ≥ 44px avec le padding implicite du flex parent */
+  min-width: 36px;
+  min-height: 44px;
+}
+
+.btn-nudge:hover  { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.btn-nudge:active { transform: translate(3px, 3px); box-shadow: none; }
 
 .curseur-log {
   -webkit-appearance: none;
@@ -638,18 +672,6 @@ main {
   -webkit-font-smoothing: none;
 }
 
-.streak-resultat {
-  font-family: var(--ff-px);
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--ink);
-  background: #FFF3E0;
-  border: var(--b);
-  padding: 0.5rem 1rem;
-  letter-spacing: 0.5px;
-  box-shadow: var(--sh-sm);
-  -webkit-font-smoothing: none;
-}
 
 .boutons-resultat {
   display: flex;

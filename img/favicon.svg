@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#0f1923"/>
-  <text x="16" y="23" font-family="system-ui,sans-serif" font-size="20" font-weight="900" text-anchor="middle" fill="#e8732e">E</text>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect x="7" y="7" width="54" height="54" fill="#16140F"></rect>
+  <rect x="2" y="2" width="54" height="54" fill="#2C3BD6" stroke="#16140F" stroke-width="4"></rect>
+  
+  <rect x="20" y="9" width="6" height="24" fill="#F5F0E4"></rect>
+  <rect x="20" y="9" width="18" height="5.5" fill="#F5F0E4"></rect>
+  <rect x="20" y="18.5" width="14.5" height="5" fill="#F5F0E4"></rect>
+  <rect x="20" y="27.5" width="18" height="5.5" fill="#F5F0E4"></rect>
+  <line x1="16" y1="45.5" x2="42" y2="45.5" stroke="#F5F0E4" stroke-width="3.5" stroke-linecap="square"></line>
+  <rect x="25.5" y="41" width="7" height="9" fill="#FFFFFF" stroke="#16140F" stroke-width="2.5"></rect>
 </svg>

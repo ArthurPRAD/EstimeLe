@@ -1,5 +1,6 @@
 // ─── État du jeu ───────────────────────────────────────────────────────────
 let mancheActive = null;
+let dateActive   = '';
 let questionIndex = 0;
 let reponsesJoueur = [];
 let scoresPartie = [];
@@ -8,6 +9,10 @@ let modeArchive = false;
 let donneesJoueur = null;
 
 // ─── Constantes ────────────────────────────────────────────────────────────
+const SLIDER_MAX = 10000;  // granularité du curseur
+const NUDGE_STEP = 10;     // crans par clic ±
+const WHEEL_STEP = 50;     // crans par tick molette
+
 const PALIERS = [
   { id: 'bullseye', label: 'Bullseye !',          emoji: '🎯', seuil: 0.045, couleur: '#1D9E75' },
   { id: 'proche',   label: 'Très proche',          emoji: '🔥', seuil: 0.18,  couleur: '#D85A30' },
@@ -47,13 +52,10 @@ function calculerPalier(reponseJoueur, verite) {
 }
 
 // ─── Partage ────────────────────────────────────────────────────────────────
-function construireTextePartage(numManche, scores, paliers, streak) {
+function construireTextePartage(numManche, scores, paliers) {
   const total = scores.reduce((a, b) => a + b, 0);
   const emojis = paliers.map(p => PALIERS.find(x => x.id === p)?.emoji || '?').join('');
-  let texte = `EstimeLe #${numManche} — ${emojis} ${total}/300`;
-  if (streak >= 3) texte += ` — streak ${streak} j`;
-  texte += ` — estimele.fr`;
-  return texte;
+  return `EstimeLe #${numManche} — ${emojis} ${total}/300 — estimele.fr`;
 }
 
 async function partager(texte) {
@@ -84,14 +86,21 @@ async function initialiserJeu(numMancheArchive = null) {
   let manche;
   if (numMancheArchive !== null) {
     manche = await getMancheParNumero(numMancheArchive);
+    dateActive = await getDateDeManche(numMancheArchive);
     modeArchive = true;
   } else {
     manche = await getMancheDuJour();
+    dateActive = await getDateDuJour();
     modeArchive = false;
   }
 
   if (!manche) {
-    document.getElementById('ecran-jeu').innerHTML = '<p class="erreur">Manche introuvable.</p>';
+    document.getElementById('ecran-jeu').innerHTML = `
+      <div style="text-align:center;padding:2.5rem 1rem">
+        <p style="font-size:2rem;margin-bottom:1rem">📭</p>
+        <p style="font-weight:700;margin-bottom:0.5rem">Plus de questions disponibles&nbsp;!</p>
+        <p style="color:var(--ink-mid);font-size:0.9rem">Revenez demain ou ajoutez de nouvelles manches dans questionsV2.json.</p>
+      </div>`;
     return;
   }
 
@@ -108,6 +117,8 @@ async function initialiserJeu(numMancheArchive = null) {
   if (!modeArchive && donneesJoueur.partie_en_cours?.manche === manche.numero) {
     questionIndex = donneesJoueur.partie_en_cours.question_courante;
     reponsesJoueur = [...donneesJoueur.partie_en_cours.reponses];
+    scoresPartie = reponsesJoueur.map((r, i) => calculerScore(r, manche.questions[i].reponse));
+    paliersPartie = reponsesJoueur.map((r, i) => calculerPalier(r, manche.questions[i].reponse).id);
   } else {
     questionIndex = 0;
     reponsesJoueur = [];
@@ -128,9 +139,12 @@ function afficherQuestion() {
 
   container.innerHTML = `
     <div class="question-header">
-      <div class="numero-manche">EstimeLe #${mancheActive.numero}${modeArchive ? ' <span class="badge-archive">Archive</span>' : ''}</div>
+      <div class="numero-manche">
+        EstimeLe #${mancheActive.numero}
+        ${modeArchive ? ' <span class="badge-archive">Archive</span>' : ''}
+      </div>
+      <div class="date-manche">${dateActive}</div>
       <div class="progression">Question ${questionIndex + 1}/3</div>
-      ${!modeArchive ? `<div class="streak"><span class="flamme">🔥</span> ${donneesJoueur.streak_actuel} j</div>` : ''}
     </div>
 
     <div class="question-corps">
@@ -142,15 +156,19 @@ function afficherQuestion() {
 
       <div class="slider-container">
         <span class="borne-label">${formaterNombre(q.borne_min)}</span>
-        <input
-          type="range"
-          id="curseur"
-          min="0"
-          max="1000"
-          value="${Math.round(tInitial * 1000)}"
-          class="curseur-log"
-          aria-label="Votre estimation"
-        />
+        <div class="slider-nudge-group">
+          <button class="btn-nudge" id="btn-moins" aria-label="Valeur inférieure">−</button>
+          <input
+            type="range"
+            id="curseur"
+            min="0"
+            max="${SLIDER_MAX}"
+            value="${Math.round(tInitial * SLIDER_MAX)}"
+            class="curseur-log"
+            aria-label="Votre estimation"
+          />
+          <button class="btn-nudge" id="btn-plus" aria-label="Valeur supérieure">+</button>
+        </div>
         <span class="borne-label">${formaterNombre(q.borne_max)}</span>
       </div>
     </div>
@@ -163,11 +181,31 @@ function afficherQuestion() {
   const curseur = document.getElementById('curseur');
   const affichage = document.getElementById('valeur-affichee');
 
-  curseur.addEventListener('input', () => {
-    const t = curseur.value / 1000;
+  function majAffichage() {
+    const t = curseur.value / SLIDER_MAX;
     const v = arrondir(sliderVerValeur(t, q.borne_min, q.borne_max));
     affichage.innerHTML = `${formaterNombre(v)} <span class="unite">${q.unite}</span>`;
+  }
+
+  curseur.addEventListener('input', majAffichage);
+
+  // Boutons ± — précision au cran
+  document.getElementById('btn-moins').addEventListener('click', () => {
+    curseur.value = Math.max(0, parseInt(curseur.value) - NUDGE_STEP);
+    majAffichage();
   });
+  document.getElementById('btn-plus').addEventListener('click', () => {
+    curseur.value = Math.min(SLIDER_MAX, parseInt(curseur.value) + NUDGE_STEP);
+    majAffichage();
+  });
+
+  // Molette souris
+  curseur.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? WHEEL_STEP : -WHEEL_STEP;
+    curseur.value = Math.max(0, Math.min(SLIDER_MAX, parseInt(curseur.value) + delta));
+    majAffichage();
+  }, { passive: false });
 
   // Sauvegarder la partie en cours
   if (!modeArchive) {
@@ -184,7 +222,7 @@ function afficherQuestion() {
 function validerReponse() {
   const curseur = document.getElementById('curseur');
   const q = mancheActive.questions[questionIndex];
-  const t = curseur.value / 1000;
+  const t = curseur.value / SLIDER_MAX;
   const reponse = arrondir(sliderVerValeur(t, q.borne_min, q.borne_max));
 
   const score = calculerScore(reponse, q.reponse);
@@ -256,7 +294,7 @@ function afficherResultatFinal(scores, paliers) {
   const container = document.getElementById('ecran-jeu');
   const total = scores.reduce((a, b) => a + b, 0);
   const donneesActuelles = chargerDonnees();
-  const textePartage = construireTextePartage(mancheActive.numero, scores, paliers, donneesActuelles.streak_actuel);
+  const textePartage = construireTextePartage(mancheActive.numero, scores, paliers);
 
   const recapHtml = paliers.map((p, i) => {
     const palierInfo = PALIERS.find(x => x.id === p);
@@ -276,11 +314,6 @@ function afficherResultatFinal(scores, paliers) {
 
       <div class="recap-questions">${recapHtml}</div>
 
-      ${!modeArchive ? `
-        <div class="streak-resultat">
-          🔥 Streak : ${donneesActuelles.streak_actuel} jour${donneesActuelles.streak_actuel > 1 ? 's' : ''}
-        </div>
-      ` : ''}
 
       <div class="boutons-resultat">
         <button class="btn-partager" onclick="partager(\`${textePartage.replace(/`/g, '\\`')}\`)">
@@ -328,14 +361,6 @@ function afficherStats() {
         <div class="stat-chiffre">
           <div class="stat-val">${d.stats.score_moyen}</div>
           <div class="stat-lbl">Score moyen</div>
-        </div>
-        <div class="stat-chiffre">
-          <div class="stat-val">${d.streak_actuel}</div>
-          <div class="stat-lbl">Streak actuel</div>
-        </div>
-        <div class="stat-chiffre">
-          <div class="stat-val">${d.meilleur_streak}</div>
-          <div class="stat-lbl">Meilleur streak</div>
         </div>
       </div>
 
