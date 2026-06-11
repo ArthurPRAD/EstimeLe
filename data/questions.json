@@ -27,7 +27,7 @@
           "borne_min": 1000,
           "borne_max": 500000,
           "source": "SNCF Réseau, 2023",
-          "anecdote": "Le réseau français est le 2e d'Europe après l'Allemagne. Il comprend 2 800 km de LGV (lignes à grande vitesse).",
+          "anecdote": "Le réseau français est le 2e d'Europe après l'Allemagne.",
           "theme": "transports",
           "difficulte": 2
         },
