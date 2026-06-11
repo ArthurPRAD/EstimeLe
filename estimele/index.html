@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EstimeLe — Le jeu d'estimation quotidien</title>
+  <meta name="description" content="Sauras-tu estimer ? Trois questions chiffrées par jour, un curseur logarithmique, un score sur 300." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EstimeLe — Le jeu d'estimation quotidien" />
+  <meta property="og:description" content="Sauras-tu estimer ? Le jeu d'estimation quotidien à la française." />
+  <meta property="og:image" content="img/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://estimele.fr" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EstimeLe" />
+  <meta name="twitter:description" content="Sauras-tu estimer ? Le jeu d'estimation quotidien." />
+  <meta name="twitter:image" content="img/og-image.png" />
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="img/favicon-192.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Estime<span>Le</span></a>
+      <nav class="nav-links">
+        <a href="archives.html">Archives</a>
+        <a href="apropos.html">Règles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="ecran-jeu">
+      <p style="text-align:center;padding:3rem;color:var(--text-muted)">Chargement…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a href="mentions-legales.html">Mentions légales</a>
+  </footer>
+
+  <div id="notification" role="status" aria-live="polite"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/daily.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const archive = params.has('archive') ? parseInt(params.get('archive'), 10) : null;
+    document.addEventListener('DOMContentLoaded', () => initialiserJeu(archive));
+  </script>
+</body>
+</html>
