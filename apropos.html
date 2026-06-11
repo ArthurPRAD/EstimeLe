@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos — EstimeLe</title>
+  <meta name="description" content="Comment jouer à EstimeLe ? Règles du jeu et informations." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Estime<span>Le</span></a>
+      <nav class="nav-links">
+        <a href="archives.html">Archives</a>
+        <a href="apropos.html" class="active">Règles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-titre">À propos</h1>
+    <div class="page-contenu">
+      <h2>Comment jouer ?</h2>
+      <p>Chaque jour, trois questions sur des chiffres du quotidien français t'attendent. Utilise le curseur pour régler ton estimation, puis valide. Après chaque réponse, tu découvres la vraie valeur, une anecdote et ta note.</p>
+
+      <h2>Le curseur logarithmique</h2>
+      <p>Le curseur n'est pas linéaire : chaque segment couvre un ordre de grandeur. Ainsi, passer de 100 à 1 000 prend autant de déplacement que passer de 1 000 à 10 000. Tu as la même précision relative quelle que soit l'échelle.</p>
+
+      <h2>Les paliers</h2>
+      <ul>
+        <li>🎯 <strong>Bullseye</strong> — à ±10 % de la vérité</li>
+        <li>🔥 <strong>Très proche</strong> — à ±50 %</li>
+        <li>👌 <strong>Bon ordre de grandeur</strong> — facteur ×2 / ÷2 max</li>
+        <li>😬 <strong>Loin du compte</strong> — facteur ×10 / ÷10 max</li>
+        <li>🚀 <strong>Autre planète</strong> — au-delà</li>
+      </ul>
+
+      <h2>Le score</h2>
+      <p>Chaque question rapporte de 0 à 100 points. Le score du jour est la somme des trois, sur 300. La formule : <em>score = max(0, arrondi(100 − 100 × d / 0,7))</em>, où <em>d</em> est la distance logarithmique entre ta réponse et la vérité.</p>
+
+      <h2>Le streak</h2>
+      <p>Le streak compte tes jours consécutifs joués. Il repart à zéro si tu rates un jour. Il s'affiche dans le partage à partir de 3 jours.</p>
+
+      <h2>Les données</h2>
+      <p>Tout est stocké dans ton navigateur uniquement. Aucune donnée n'est envoyée nulle part. Changer de navigateur ou vider le cache remet tes statistiques à zéro — c'est le standard du genre.</p>
+
+      <h2>Contact</h2>
+      <p>Une suggestion, une question sourcée à proposer ? Écris à <a href="mailto:contact@estimele.fr">contact@estimele.fr</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a href="mentions-legales.html">Mentions légales</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archives — EstimeLe</title>
+  <meta name="description" content="Retrouvez et rejouez toutes les manches passées d'EstimeLe." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Estime<span>Le</span></a>
+      <nav class="nav-links">
+        <a href="archives.html" class="active">Archives</a>
+        <a href="apropos.html">Règles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-titre">Archives</h1>
+    <p class="page-sous-titre">Rejoue les manches passées — les résultats ne comptent pas dans tes statistiques.</p>
+    <div id="liste-archives">
+      <p style="color:var(--text-muted)">Chargement…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a href="mentions-legales.html">Mentions légales</a>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/daily.js"></script>
+  <script src="js/archives.js"></script>
+</body>
+</html>
